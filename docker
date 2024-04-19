@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    
+    options {
+        buildDiscarder(logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '1', daysToKeepStr: '1', numToKeepStr: '1'))
+    }
+    
+    parameters {
+        string(defaultValue: 'anu', description: 'Parameter Description', name: 'anu', trim: true)
+    }
+    
+    stages {
+        stage('parameter') {
+            steps {
+                echo "${params.anu}"
+            }
+        }
+    }
+}
